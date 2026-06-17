@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LogOut, RefreshCw, Clock, ExternalLink } from "lucide-react";
+import { LogOut, RefreshCw, Clock, ExternalLink, Copy, Check } from "lucide-react";
 import { AuthService } from "@/lib/auth";
 import { api, ScoreData, CreditEvent } from "@/lib/api-client";
 
@@ -41,6 +41,36 @@ function BreakdownPlaceholder({
   );
 }
 
+function CopyTxButton({ txHash }: { txHash: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(txHash);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // Clipboard not available
+    }
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="text-white/30 hover:text-white/60 transition-colors"
+      aria-label="Copy transaction hash"
+    >
+      {copied ? (
+        <Check className="w-3.5 h-3.5 text-emerald-400" />
+      ) : (
+        <Copy className="w-3.5 h-3.5" />
+      )}
+    </button>
+  );
+}
+
 function EventRow({ event }: { event: CreditEvent }) {
   const positive = event.scoreImpact >= 0;
   return (
@@ -61,6 +91,7 @@ function EventRow({ event }: { event: CreditEvent }) {
           {positive ? "+" : ""}
           {event.scoreImpact}
         </span>
+        <CopyTxButton txHash={event.txHash} />
         <a
           href={`https://stellar.expert/explorer/testnet/tx/${event.txHash}`}
           target="_blank"
