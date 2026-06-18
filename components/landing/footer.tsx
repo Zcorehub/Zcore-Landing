@@ -1,3 +1,4 @@
+import { Logo } from "@/components/landing/logo";
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -6,8 +7,8 @@ export function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <p className="font-bold uppercase tracking-zk text-white">ZCore</p>
-            <p className="text-xs text-white/30 tracking-wide mt-1">{siteConfig.tagline}</p>
+            <Logo size="sm" />
+            <p className="text-xs text-white/30 tracking-wide mt-2">{siteConfig.tagline}</p>
           </div>
 
           <div className="flex items-center gap-8 text-xs text-white/30 uppercase tracking-zk">

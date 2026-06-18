@@ -19,15 +19,15 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ZCore — Your Wallet Is Your Credit | Stellar DeFi",
+  title: "ZCore | Your Wallet Is Your Credit | Stellar DeFi",
   description:
-    "Portable on-chain credit scoring for Stellar. No banks. No forms. Just verified wallet history turned into a 0–850 score.",
+    "Portable on-chain credit scoring for Stellar. No banks. No forms. Just verified wallet history turned into a 0-850 score.",
   openGraph: {
-    title: "ZCore — Your Wallet Is Your Credit",
+    title: "ZCore | Your Wallet Is Your Credit",
     description:
       "Portable on-chain credit scoring for Stellar DeFi. Built from real on-chain proof.",
     type: "website",
-    images: ["/logo.jpeg"],
+    images: ["/logo_name.png"],
   },
   icons: {
     icon: "/logo.jpeg",
