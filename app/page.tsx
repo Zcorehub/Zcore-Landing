@@ -14,7 +14,7 @@ import { Tiers } from "@/components/landing/tiers";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#030508] text-white relative">
+    <div className="min-h-screen bg-black text-white relative font-zk">
       <ScrollProgress />
       <MouseParallaxBg />
       <LandingNav />

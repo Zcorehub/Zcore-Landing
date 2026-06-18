@@ -35,43 +35,53 @@ export function MouseParallaxBg({ className }: MouseParallaxBgProps) {
       )}
       style={{ "--mx": 0, "--my": 0 } as React.CSSProperties}
     >
-      <div className="absolute inset-0 bg-[#030508]" />
+      <div className="absolute inset-0 bg-black" />
       <div
-        className="absolute inset-0 opacity-[0.35] animate-grid-drift"
+        className="absolute inset-0 opacity-[0.25] animate-grid-drift"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px)",
+            "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
       <div
-        className="absolute -top-40 left-1/2 w-[900px] h-[900px] rounded-full bg-indigo-600/[0.12] blur-[140px] animate-glow-pulse transition-transform duration-700 ease-out"
+        className="absolute -top-40 left-1/2 w-[900px] h-[900px] rounded-full bg-white/[0.03] blur-[140px] animate-glow-pulse transition-transform duration-700 ease-out"
         style={{
           transform:
             "translate(calc(-50% + var(--mx) * 40px), calc(0px + var(--my) * 30px))",
         }}
       />
       <div
-        className="absolute top-1/3 -right-32 w-[500px] h-[500px] rounded-full bg-violet-600/[0.08] blur-[120px] animate-float transition-transform duration-700 ease-out"
+        className="absolute top-1/3 -right-32 w-[500px] h-[500px] rounded-full bg-neutral-800/[0.15] blur-[120px] animate-float transition-transform duration-700 ease-out"
         style={{
           transform: "translate(calc(var(--mx) * -25px), calc(var(--my) * 20px))",
         }}
       />
       <div
-        className="absolute bottom-0 -left-32 w-[600px] h-[600px] rounded-full bg-cyan-500/[0.05] blur-[100px] animate-float-delayed transition-transform duration-700 ease-out"
+        className="absolute bottom-0 -left-32 w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[100px] animate-float-delayed transition-transform duration-700 ease-out"
         style={{
           transform: "translate(calc(var(--mx) * 20px), calc(var(--my) * -15px))",
         }}
       />
-      <div className="absolute inset-0 bg-noise opacity-[0.03]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+      <div className="absolute inset-0 bg-noise opacity-[0.04]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       <FloatingParticles />
+      <DiagonalSlash />
     </div>
   );
 }
 
+function DiagonalSlash() {
+  return (
+    <div
+      className="absolute top-1/4 -left-20 w-[600px] h-[2px] bg-white/[0.04] rotate-[35deg] origin-left"
+      style={{ transform: "rotate(35deg)" }}
+    />
+  );
+}
+
 function FloatingParticles() {
-  const particles = Array.from({ length: 18 }, (_, i) => ({
+  const particles = Array.from({ length: 12 }, (_, i) => ({
     id: i,
     left: `${(i * 17 + 7) % 100}%`,
     top: `${(i * 23 + 11) % 100}%`,
@@ -85,7 +95,7 @@ function FloatingParticles() {
       {particles.map((p) => (
         <span
           key={p.id}
-          className="absolute rounded-full bg-indigo-400/30 animate-particle-float"
+          className="absolute bg-white/20 animate-particle-float"
           style={{
             left: p.left,
             top: p.top,
