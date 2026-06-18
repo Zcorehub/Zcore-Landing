@@ -1,4 +1,5 @@
 import { Logo } from "@/components/landing/logo";
+import { SocialButtons } from "@/components/landing/social-buttons";
 import { getDappUrl, siteConfig } from "@/lib/site";
 
 const FOOTER_LINKS = {
@@ -15,14 +16,13 @@ const FOOTER_LINKS = {
     { label: "Discussions", href: siteConfig.discussions, external: true },
   ],
   app: [{ label: "ZCore", href: getDappUrl("/register"), external: true }],
-  social: [{ label: "X", href: siteConfig.social.x, external: true }],
 };
 
 export function Footer() {
   return (
     <footer className="border-t border-white/[0.08] py-16 px-4 sm:px-6 bg-black">
       <div className="max-w-6xl mx-auto">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div className="sm:col-span-2 lg:col-span-1">
             <Logo size="sm" />
             <p className="text-xs text-white/40 tracking-wide mt-3 max-w-xs leading-relaxed">
@@ -71,27 +71,6 @@ export function Footer() {
 
           <div>
             <p className="text-[10px] font-bold uppercase tracking-zk-wide text-white/30 mb-4">
-              Social
-            </p>
-            <ul className="space-y-2">
-              {FOOTER_LINKS.social.map(({ label, href, external }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    {...(external
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                    className="text-xs text-white/50 hover:text-white transition-colors tracking-wide"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-zk-wide text-white/30 mb-4">
               ZCore
             </p>
             <ul className="space-y-2">
@@ -112,23 +91,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] text-white/20 uppercase tracking-zk-wide">
-            {[
-              "does not lend",
-              "does not custody",
-              "does not collect PII",
-              "open source",
-            ].map((item) => (
-              <span key={item} className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-white/30" />
-                {item}
-              </span>
-            ))}
-          </div>
-          <p className="text-[10px] text-white/25 tracking-zk">
+        <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-6">
+          <p className="text-xs text-white/40 tracking-wide">
             {new Date().getFullYear()} ZCore. All rights reserved.
           </p>
+          <SocialButtons />
         </div>
       </div>
     </footer>

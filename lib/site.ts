@@ -11,6 +11,9 @@ export const siteConfig = {
   social: {
     x: "https://x.com/z_core_",
     xHandle: "@z_core_",
+    instagram: undefined as string | undefined,
+    linkedin: undefined as string | undefined,
+    discord: undefined as string | undefined,
   },
 };
 
