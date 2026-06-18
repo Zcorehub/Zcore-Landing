@@ -152,5 +152,3 @@ Quick flow:
 2. Fork → branch (`feat/name`, `fix/name`, `style/name`).
 3. `npm run dev` + verify responsive layout.
 4. Open a PR using the [template](./.github/pull_request_template.md).
-
-Issues in the **GrantFox OSS** program may be eligible for rewards on merge.
