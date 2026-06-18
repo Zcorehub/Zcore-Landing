@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="public/logo.jpeg" alt="ZCore" width="80" />
+  <img src="public/logo_name.png" alt="ZCore" width="160" />
 </p>
 
 <h1 align="center">ZCore Landing</h1>
 
 <p align="center">
-  Official landing page for <strong>ZCore</strong> — portable credit scoring for Stellar DeFi.<br/>
+  Official landing page for <strong>ZCore</strong>: portable credit scoring for Stellar DeFi.<br/>
   Zero-knowledge, on-chain only. No banks. No forms. Just your wallet.
 </p>
 
@@ -72,7 +72,7 @@ NEXT_PUBLIC_DAPP_URL=https://app.zcore.xyz
 | Marquee | `marquee.tsx` | Claim ticker (no custody, open source, etc.) |
 | How It Works | `how-it-works.tsx` | 3 steps: wallet → chain → score |
 | Partners | `partners.tsx` | Trustless Work, Blend, Vaquita |
-| Score System | `score-system.tsx` | 0–850 engine, transparent breakdown |
+| Score System | `score-system.tsx` | 0-850 engine, transparent breakdown |
 | Tiers | `tiers.tsx` | Risk bands in % (LTV, default, APR) |
 | Builders | `builders.tsx` | API preview for integrators |
 | CTA | `cta.tsx` | Final call-to-action to the dapp |
@@ -98,10 +98,11 @@ NEXT_PUBLIC_DAPP_URL=https://app.zcore.xyz
 
 - Background: `#000000`
 - ZK typography: `font-zk` (Space Mono) for UI, labels, and sections
-- Hero headline: Inter bold — `YOUR WALLET IS YOUR CREDIT.`
-- Badge: JetBrains Mono — `Zero-Knowledge · On-chain only`
+- Hero headline: Inter bold: `YOUR WALLET IS YOUR CREDIT.`
+- Badge: JetBrains Mono: `Zero-Knowledge · On-chain only`
 - Angular corners: `zk-slash` and `zk-badge` utilities in `globals.css`
-- Logo: navbar only (`components/landing/logo.tsx`)
+- Logo: `logo_name.png` in navbar and footer (`components/landing/logo.tsx`)
+- Favicon: `logo.jpeg` (Z mark only)
 
 ---
 
@@ -123,7 +124,8 @@ lib/
   utils.ts          # cn() and helpers
 
 public/
-  logo.jpeg         # ZCore logo
+  logo_name.png     # Primary wordmark logo
+  logo.jpeg         # Z mark: favicon only
 ```
 
 ---

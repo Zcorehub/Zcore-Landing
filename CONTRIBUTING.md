@@ -1,8 +1,8 @@
 # Contributing to ZCore Landing
 
-Thanks for your interest in contributing! This repo is **landing only** — marketing page, animations, and CTAs. The authenticated dapp (dashboard, login, history) and backend API live in separate repos.
+Thanks for your interest in contributing! This repo is **landing only**: marketing page, animations, and CTAs. The authenticated dapp (dashboard, login, history) and backend API live in separate repos.
 
-ZCore is open source and part of the **GrantFox OSS** program — contributions may be eligible for rewards or bounties.
+ZCore is open source and part of the **GrantFox OSS** program: contributions may be eligible for rewards or bounties.
 
 ---
 
@@ -57,16 +57,16 @@ If your change touches dapp functionality, open the PR in the [dapp repo](https:
 
 ## How to contribute
 
-1. **Find or open an issue** — check [existing issues](https://github.com/Zcorehub/Zcore-Landing/issues) or create one describing the change.
+1. **Find or open an issue**: check [existing issues](https://github.com/Zcorehub/Zcore-Landing/issues) or create one describing the change.
 2. **Comment on the issue** to claim it and avoid duplicate work.
 3. **Fork the repo** and create a branch:
-   - `feat/short-description` — new section or feature
-   - `fix/short-description` — bug fix
-   - `style/short-description` — visual / copy changes
-   - `docs/short-description` — README, CONTRIBUTING, templates
-4. **Make atomic commits** — one logical change per commit when possible.
-5. **Test locally** — dev server + responsive breakpoints (mobile, tablet, desktop).
-6. **Open a pull request** — the PR template will guide you.
+   - `feat/short-description`: new section or feature
+   - `fix/short-description`: bug fix
+   - `style/short-description`: visual / copy changes
+   - `docs/short-description`: README, CONTRIBUTING, templates
+4. **Make atomic commits**: one logical change per commit when possible.
+5. **Test locally**: dev server + responsive breakpoints (mobile, tablet, desktop).
+6. **Open a pull request**: the PR template will guide you.
 
 ---
 
@@ -77,7 +77,7 @@ Use the [PR template](.github/pull_request_template.md). Every PR should:
 - Reference the issue (`Closes #12` or `Relates to #12`).
 - Include screenshots or a short screen recording for visual changes.
 - Confirm `npm run build` passes.
-- Keep scope focused — one section or concern per PR when possible.
+- Keep scope focused: one section or concern per PR when possible.
 - Not introduce dapp routes or backend logic.
 
 ### PR title format
@@ -111,8 +111,8 @@ The landing uses a **monochrome zero-knowledge** aesthetic. Do not introduce col
 | Background | `#000000` | Page, sections |
 | Surface | `#0a0a0a` | Cards, panels |
 | Foreground | `#ffffff` | Primary text |
-| Muted | `white/40`–`white/60` | Body copy, labels |
-| Border | `white/[0.08]`–`white/[0.15]` | Cards, dividers |
+| Muted | `white/40`-`white/60` | Body copy, labels |
+| Border | `white/[0.08]`-`white/[0.15]` | Cards, dividers |
 
 ### Typography
 
@@ -127,38 +127,39 @@ The landing uses a **monochrome zero-knowledge** aesthetic. Do not introduce col
 
 ### Components & utilities
 
-- `zk-slash` — angular bottom-right clip on cards
-- `zk-badge` — angular badge clip
-- `card-glass` — frosted card surface
-- `glow-white` — subtle white glow on primary CTAs
-- `SectionLabel` — small uppercase section tag
-- `SectionHeading` — section `h2` in ZK style
+- `zk-slash`: angular bottom-right clip on cards
+- `zk-badge`: angular badge clip
+- `card-glass`: frosted card surface
+- `glow-white`: subtle white glow on primary CTAs
+- `SectionLabel`: small uppercase section tag
+- `SectionHeading`: section `h2` in ZK style
 
 ### Logo usage
 
-- Logo image appears **only in the navbar** (small).
-- Do not duplicate the logo in hero, CTA, or footer.
-- Asset: `public/logo.jpeg`, component: `components/landing/logo.tsx`.
+- **Primary logo:** `public/logo_name.png`: used in navbar, footer, and 404 via `components/landing/logo.tsx`.
+- **Favicon only:** `public/logo.jpeg`: the Z mark; do not use in page UI.
+- Do not duplicate the logo in hero, CTA, or other sections.
 
 ### Partner protocols
 
-Trustless Work, Blend, and Vaquita appear **only** in the Partners section — not in score preview or other sections.
+Trustless Work, Blend, and Vaquita appear **only** in the Partners section: not in score preview or other sections.
 
 ### Tier data
 
-Tiers show **percentage-based risk bands** (Max LTV, Est. default, APR range) — not dollar lending limits. ZCore does not lend; lenders choose their own exposure.
+Tiers show **percentage-based risk bands** (Max LTV, Est. default, APR range): not dollar lending limits. ZCore does not lend; lenders choose their own exposure.
 
 ---
 
 ## Code conventions
 
-- **Landing components** live in `components/landing/` — one file per section.
-- **CTAs** use `getDappUrl()` from `lib/site.ts` — never hardcode dapp URLs.
+- **Landing components** live in `components/landing/`: one file per section.
+- **CTAs** use `getDappUrl()` from `lib/site.ts`: never hardcode dapp URLs.
 - **Site config** (links, tagline) lives in `lib/site.ts`.
 - Prefer Tailwind utilities over custom CSS unless adding reusable tokens in `globals.css`.
 - Match existing animation patterns (`Reveal`, `TiltCard`, `MagneticWrap` from `motion.tsx`).
 - No comments in code unless the reason is non-obvious.
-- Keep diffs minimal — don't refactor unrelated code in the same PR.
+- Do not use em dashes or en dashes in copy, docs, or metadata. Use commas, colons, periods, or regular hyphens.
+- Keep diffs minimal: don't refactor unrelated code in the same PR.
 
 ---
 
@@ -200,15 +201,15 @@ lib/
 
 Before submitting a PR, verify:
 
-- [ ] `npm run dev` — page loads without console errors
-- [ ] `npm run build` — production build succeeds
-- [ ] `npm run lint` — no new lint errors
-- [ ] Mobile (375px) — navbar menu works, sections readable
-- [ ] Tablet (768px) — grid layouts correct
-- [ ] Desktop (1280px+) — parallax and animations perform well
+- [ ] `npm run dev`: page loads without console errors
+- [ ] `npm run build`: production build succeeds
+- [ ] `npm run lint`: no new lint errors
+- [ ] Mobile (375px): navbar menu works, sections readable
+- [ ] Tablet (768px): grid layouts correct
+- [ ] Desktop (1280px+): parallax and animations perform well
 - [ ] CTAs resolve correctly with and without `NEXT_PUBLIC_DAPP_URL`
 - [ ] No color accents introduced outside the monochrome palette
-- [ ] Logo not duplicated beyond navbar
+- [ ] `logo_name.png` used for UI logo; `logo.jpeg` reserved for favicon only
 
 ---
 
@@ -218,7 +219,7 @@ Before submitting a PR, verify:
 |---|---|
 | #6 Mobile hamburger menu | ✅ Landing nav |
 | #7 Custom 404 page | ✅ `app/not-found.tsx` |
-| #1–#5, #8 | Dapp — contribute in the dapp repo |
+| #1-#5, #8 | Dapp: contribute in the dapp repo |
 
 Browse [open issues](https://github.com/Zcorehub/Zcore-Landing/issues) for `good first issue` or `landing` labels.
 
