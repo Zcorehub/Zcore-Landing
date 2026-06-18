@@ -36,7 +36,7 @@ export function Cta() {
                     size="lg"
                     className="px-10 h-14 text-sm uppercase tracking-zk glow-white"
                   >
-                    Launch the app
+                    Launch ZCore
                     <ArrowRight className="w-5 h-5" />
                   </Button>
                 </a>

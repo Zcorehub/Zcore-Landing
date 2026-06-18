@@ -2,10 +2,10 @@
   <img src="public/logo_name.png" alt="ZCore" width="160" />
 </p>
 
-<h1 align="center">ZCore Landing</h1>
+<h1 align="center">ZCore</h1>
 
 <p align="center">
-  Official landing page for <strong>ZCore</strong>: portable credit scoring for Stellar DeFi.<br/>
+  Portable credit scoring for Stellar DeFi.<br/>
   Zero-knowledge, on-chain only. No banks. No forms. Just your wallet.
 </p>
 
@@ -18,7 +18,7 @@
 
 ## What is this repo?
 
-This repository contains **only the ZCore landing page**: marketing, animations, informational sections, and CTAs to the dapp.
+This repository contains the **ZCore** marketing site: animations, informational sections, and CTAs to the dapp.
 
 | Includes | Does not include |
 |---|---|

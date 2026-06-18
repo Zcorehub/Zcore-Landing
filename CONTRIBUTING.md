@@ -1,4 +1,4 @@
-# Contributing to ZCore Landing
+# Contributing to ZCore
 
 Thanks for your interest in contributing! This repo is **landing only**: marketing page, animations, and CTAs. The authenticated dapp (dashboard, login, history) and backend API live in separate repos.
 

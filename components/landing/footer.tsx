@@ -14,7 +14,7 @@ const FOOTER_LINKS = {
     { label: "Contribute", href: siteConfig.issues, external: true },
     { label: "Discussions", href: siteConfig.discussions, external: true },
   ],
-  app: [{ label: "ZCore App", href: getDappUrl("/register"), external: true }],
+  app: [{ label: "ZCore", href: getDappUrl("/register"), external: true }],
 };
 
 export function Footer() {
@@ -70,7 +70,7 @@ export function Footer() {
 
           <div>
             <p className="text-[10px] font-bold uppercase tracking-zk-wide text-white/30 mb-4">
-              App
+              ZCore
             </p>
             <ul className="space-y-2">
               {FOOTER_LINKS.app.map(({ label, href, external }) => (

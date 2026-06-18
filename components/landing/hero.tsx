@@ -84,7 +84,7 @@ export function Hero() {
                     size="lg"
                     className="w-full sm:w-auto px-8 h-14 text-sm uppercase tracking-zk glow-white"
                   >
-                    Launch app
+                    Launch ZCore
                     <ArrowRight className="w-5 h-5" />
                   </Button>
                 </a>

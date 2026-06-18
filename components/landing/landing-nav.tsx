@@ -65,7 +65,7 @@ export function LandingNav() {
           </a>
           <a href={dappUrl}>
             <Button size="sm">
-              Launch App
+              Launch ZCore
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Button>
           </a>
@@ -107,7 +107,7 @@ export function LandingNav() {
             </a>
             <a href={dappUrl} onClick={closeMenu}>
               <Button className="w-full">
-                Launch App
+                Launch ZCore
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </Button>
             </a>

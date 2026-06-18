@@ -19,13 +19,13 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ZCore | Portable On-Chain Credit for Stellar",
+  title: "ZCore",
   description:
-    "Discover, access, and activate on-chain credit on Stellar. No banks. No forms. Just your wallet turned into a portable 0-850 score.",
+    "Discover, access, and activate on-chain credit on Stellar. No banks. No forms. Just your wallet.",
   openGraph: {
-    title: "ZCore | Your Wallet Is Your Credit",
+    title: "ZCore",
     description:
-      "All-in-one portable credit scoring for Stellar DeFi. Built from real on-chain proof.",
+      "All-in-one portable credit scoring for Stellar. Built from real on-chain proof.",
     type: "website",
     images: ["/logo_name.png"],
   },
