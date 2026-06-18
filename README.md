@@ -132,12 +132,15 @@ public/
 
 ## Deploy on Vercel
 
-1. Import the repo at [vercel.com/new](https://vercel.com/new).
-2. Framework preset: **Next.js** (auto-detected).
+Production: **https://zcore.vercel.app**
+
+1. Import the repo at [vercel.com/new](https://vercel.com/new) (project name: `zcore`).
+2. Framework preset: **Next.js** (auto-detected via `vercel.json`).
 3. Add `NEXT_PUBLIC_DAPP_URL` under Environment Variables.
 4. Deploy.
 
 ```bash
+npx vercel link --project zcore
 npx vercel          # preview
 npx vercel --prod   # production
 ```
