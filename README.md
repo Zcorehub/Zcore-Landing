@@ -1,8 +1,8 @@
-# ZCore DApp
+# ZCore Landing
 
-Frontend de la aplicación ZCore — consulta tu credit score on-chain, historial de eventos y perfil de wallet en Stellar DeFi.
+Landing page de ZCore — credit scoring portable para Stellar DeFi.
 
-La landing page vive en un repositorio separado. Este repo contiene solo la dapp autenticada.
+Presenta el producto, partners, sistema de score y CTAs hacia login/registro. La dapp autenticada vive en un repositorio separado.
 
 ## Quick start
 
@@ -14,18 +14,9 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) — redirige a `/login` o `/dashboard` según tu sesión.
+Abre [http://localhost:3000](http://localhost:3000).
 
 Para el backend, ver [ZCore-dev](https://github.com/Zcorehub/ZCore-dev).
-
-## Rutas
-
-| Ruta | Descripción |
-|---|---|
-| `/login` | Iniciar sesión con wallet Stellar |
-| `/register` | Registrar wallet y generar score |
-| `/dashboard` | Score, breakdown y eventos recientes |
-| `/dashboard/history` | Historial completo de eventos |
 
 ## Stack
 
@@ -33,7 +24,6 @@ Para el backend, ver [ZCore-dev](https://github.com/Zcorehub/ZCore-dev).
 - TypeScript
 - Tailwind CSS + shadcn/ui
 - lucide-react
-- Auth por wallet en localStorage (sin JWT)
 
 ## Contribuir
 

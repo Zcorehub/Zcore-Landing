@@ -23,7 +23,7 @@ export default function NotFound() {
           <Link href="/">
             <Button className="w-full sm:w-auto">
               <ArrowLeft className="w-4 h-4" />
-              Back to app
+              Back home
             </Button>
           </Link>
           <a

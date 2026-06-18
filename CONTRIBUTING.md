@@ -1,6 +1,6 @@
-# Contributing to ZCore DApp
+# Contributing to ZCore Landing
 
-Thanks for your interest in contributing! This repo is the ZCore authenticated frontend (dashboard, login, history). The marketing landing page lives in a separate repo. ZCore is open source and part of the **GrantFox OSS** program — contributions may be eligible for rewards or bounties.
+Thanks for your interest in contributing! This repo is the ZCore marketing landing page. The authenticated dapp lives in a separate repo. ZCore is open source and part of the **GrantFox OSS** program — contributions may be eligible for rewards or bounties.
 
 ---
 
