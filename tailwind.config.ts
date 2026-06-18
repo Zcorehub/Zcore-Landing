@@ -13,22 +13,28 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        zk: ["var(--font-zk)", "var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      letterSpacing: {
+        zk: "0.08em",
+        "zk-wide": "0.14em",
       },
       colors: {
         brand: {
-          50: "#eef2ff",
-          500: "#6366f1",
-          600: "#4f46e5",
-          700: "#4338ca",
-          900: "#1e1b4b",
+          50: "#fafafa",
+          500: "#a3a3a3",
+          600: "#737373",
+          700: "#525252",
+          900: "#0a0a0a",
         },
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px)",
+          "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
         shimmer:
-          "linear-gradient(110deg, #4f46e5 0%, #6366f1 25%, #818cf8 50%, #6366f1 75%, #4f46e5 100%)",
+          "linear-gradient(110deg, #171717 0%, #404040 25%, #737373 50%, #404040 75%, #171717 100%)",
       },
       backgroundSize: {
         grid: "48px 48px",
