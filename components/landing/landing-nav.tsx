@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/landing/logo";
 import { cn } from "@/lib/utils";
 import { getDappUrl } from "@/lib/site";
 
@@ -38,28 +38,19 @@ export function LandingNav() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/[0.08] bg-[#030508]/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+          ? "border-b border-white/[0.08] bg-black/90 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       )}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 group"
-          onClick={closeMenu}
-        >
-          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 via-violet-500 to-indigo-600 flex items-center justify-center shadow-[0_0_24px_rgba(99,102,241,0.45)] group-hover:shadow-[0_0_32px_rgba(99,102,241,0.6)] transition-shadow">
-            <span className="text-xs font-black">Z</span>
-          </div>
-          <span className="text-lg font-bold tracking-tight">ZCore</span>
-        </Link>
+        <Logo size="sm" href="/" onClick={closeMenu} className="group" />
 
-        <div className="hidden md:flex items-center gap-8 text-sm text-white/50">
+        <div className="hidden md:flex items-center gap-8 text-xs text-white/40 uppercase tracking-zk">
           {NAV_LINKS.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className="hover:text-white transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-indigo-400 after:transition-all hover:after:w-full"
+              className="hover:text-white transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-white/60 after:transition-all hover:after:w-full"
             >
               {label}
             </a>
@@ -73,7 +64,7 @@ export function LandingNav() {
             </Button>
           </a>
           <a href={dappUrl}>
-            <Button size="sm" className="shadow-[0_0_20px_rgba(99,102,241,0.35)]">
+            <Button size="sm">
               Launch App
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Button>
@@ -93,7 +84,7 @@ export function LandingNav() {
 
       <div
         className={cn(
-          "md:hidden border-t border-white/[0.08] bg-[#030508]/95 backdrop-blur-xl overflow-hidden transition-all duration-300",
+          "md:hidden border-t border-white/[0.08] bg-black/95 backdrop-blur-xl overflow-hidden transition-all duration-300",
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-t-0"
         )}
       >
@@ -103,7 +94,7 @@ export function LandingNav() {
               key={href}
               href={href}
               onClick={closeMenu}
-              className="block px-3 py-2.5 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors"
+              className="block px-3 py-2.5 text-xs text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors uppercase tracking-zk"
             >
               {label}
             </a>
