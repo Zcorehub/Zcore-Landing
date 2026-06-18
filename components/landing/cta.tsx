@@ -28,7 +28,7 @@ export function Cta() {
               </h2>
               <p className="text-white/45 text-base tracking-wide mb-10 max-w-lg mx-auto">
                 Register your Stellar wallet. Get your score. Own your credit
-                history — permanently on-chain.
+                history, permanently on-chain.
               </p>
               <MagneticWrap strength={0.25}>
                 <a href={getDappUrl("/register")}>

@@ -22,8 +22,8 @@ export function Builders() {
                     &ldquo;Has this wallet been reliable with money on
                     Stellar?&rdquo;
                   </span>{" "}
-                  Integrate ZCore and make lending decisions with on-chain proof
-                  — not guesswork.
+                  Integrate ZCore and make lending decisions with on-chain
+                  proof, not guesswork.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a

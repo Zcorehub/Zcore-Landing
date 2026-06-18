@@ -15,14 +15,14 @@ const STEPS = [
   {
     n: "02",
     title: "We read the chain",
-    desc: "Horizon pulls your history. Partner protocols feed verified events — escrows, loans, tandas — all on-chain.",
+    desc: "Horizon pulls your history. Partner protocols feed verified events: escrows, loans, tandas, all on-chain.",
     icon: Globe,
     accent: "from-white/[0.04] to-transparent border-white/[0.08]",
   },
   {
     n: "03",
     title: "Score drops. Rates drop.",
-    desc: "Get a 0–850 breakdown you can share with any lender. Better tier = lower collateral, tighter default band.",
+    desc: "Get a 0-850 breakdown you can share with any lender. Better tier = lower collateral, tighter default band.",
     icon: BarChart3,
     accent: "from-white/[0.03] to-transparent border-white/[0.06]",
   },
@@ -36,7 +36,7 @@ export function HowItWorks() {
           <SectionLabel>Process</SectionLabel>
           <SectionHeading>Three steps. Zero bullshit.</SectionHeading>
           <p className="text-white/40 text-sm tracking-wide max-w-xl mx-auto">
-            From wallet to credit score in seconds — powered by data that
+            From wallet to credit score in seconds, powered by data that
             can&apos;t be faked.
           </p>
         </Reveal>

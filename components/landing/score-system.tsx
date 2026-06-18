@@ -20,7 +20,7 @@ export function ScoreSystem() {
           <Reveal variant="right">
             <SectionLabel>Scoring Engine</SectionLabel>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
-              0–850. Fully transparent.
+              0-850. Fully transparent.
             </h2>
             <p className="text-white/40 text-lg mb-8 leading-relaxed">
               Two engines. One score. Stellar base activity (150 pts max) +
@@ -49,7 +49,7 @@ export function ScoreSystem() {
                   <div>
                     <p className="font-bold text-lg">Partner Events</p>
                     <p className="text-white/40 text-sm">
-                      Escrows, loans, tandas — verified by protocols
+                      Escrows, loans, tandas, verified by protocols
                     </p>
                     <p className="text-white/50 font-mono text-sm mt-2">
                       max 700 pts

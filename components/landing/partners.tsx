@@ -22,7 +22,7 @@ const PARTNERS = [
   },
   {
     name: "Vaquita",
-    desc: "Tanda cycles — community credit, on-chain",
+    desc: "Tanda cycles: community credit, on-chain",
     event: "tanda_cycle_complete",
     points: "+100",
     icon: Zap,

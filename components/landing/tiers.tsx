@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils";
 const TIERS = [
   {
     tier: "A",
-    range: "600–850",
+    range: "600-850",
     maxLtv: "≤ 70%",
-    defaultRisk: "3–6%",
-    rate: "10–14%",
+    defaultRisk: "3-6%",
+    rate: "10-14%",
     badge: "border-white/40 bg-white/10 text-white",
     glow: "hover:border-white/30 hover:shadow-[0_0_40px_rgba(255,255,255,0.06)]",
     bar: "from-white to-neutral-300",
@@ -18,10 +18,10 @@ const TIERS = [
   },
   {
     tier: "B",
-    range: "350–599",
+    range: "350-599",
     maxLtv: "≤ 50%",
-    defaultRisk: "10–18%",
-    rate: "14–20%",
+    defaultRisk: "10-18%",
+    rate: "14-20%",
     badge: "border-white/25 bg-white/[0.06] text-white/80",
     glow: "hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.04)]",
     bar: "from-neutral-300 to-neutral-500",
@@ -29,10 +29,10 @@ const TIERS = [
   },
   {
     tier: "C",
-    range: "100–349",
+    range: "100-349",
     maxLtv: "≤ 30%",
-    defaultRisk: "25–40%",
-    rate: "20–28%",
+    defaultRisk: "25-40%",
+    rate: "20-28%",
     badge: "border-white/15 bg-white/[0.03] text-white/60",
     glow: "hover:border-white/15",
     bar: "from-neutral-500 to-neutral-600",
@@ -40,10 +40,10 @@ const TIERS = [
   },
   {
     tier: "X",
-    range: "0–99",
-    maxLtv: "—",
+    range: "0-99",
+    maxLtv: "N/A",
     defaultRisk: "50%+",
-    rate: "—",
+    rate: "N/A",
     badge: "border-white/10 bg-white/[0.02] text-white/40",
     glow: "hover:border-white/10",
     bar: "from-neutral-700 to-neutral-800",
@@ -60,7 +60,7 @@ export function Tiers() {
           <SectionLabel>Access Levels</SectionLabel>
           <SectionHeading>Credit tiers</SectionHeading>
           <p className="text-white/40 text-sm tracking-wide max-w-xl mx-auto">
-            Risk bands in percentages — not loan offers. Lenders and protocols
+            Risk bands in percentages, not loan offers. Lenders and protocols
             decide how much exposure they take on each wallet.
           </p>
         </Reveal>
@@ -129,7 +129,7 @@ export function Tiers() {
         <Reveal delay={200} variant="up" className="mt-8 text-center">
           <p className="text-white/25 text-[10px] uppercase tracking-zk-wide max-w-lg mx-auto">
             Indicative only. ZCore does not lend, set rates, or guarantee any
-            exposure — you choose the risk.
+            exposure. You choose the risk.
           </p>
         </Reveal>
       </div>

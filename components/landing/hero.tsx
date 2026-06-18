@@ -62,7 +62,7 @@ export function Hero() {
               style={fadeUp(450)}
             >
               No banks. No forms. No gatekeepers. ZCore turns verified Stellar
-              activity into a portable 0–850 score — built from real on-chain
+              activity into a portable 0-850 score, built from real on-chain
               proof, not paperwork.
             </p>
 
@@ -99,7 +99,7 @@ export function Hero() {
               style={fadeUp(720)}
             >
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-white tabular-nums">0–850</div>
+                <div className="text-2xl font-bold text-white tabular-nums">0-850</div>
                 <div className="text-[10px] uppercase tracking-zk-wide text-white/30 mt-1">
                   Score range
                 </div>
