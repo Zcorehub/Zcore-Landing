@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagneticWrap } from "@/components/landing/motion";
 import { ScorePreview } from "@/components/landing/score-preview";
@@ -16,20 +16,29 @@ const fadeUp = (delay: number) =>
 export function Hero() {
   return (
     <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 px-4 sm:px-6 overflow-hidden">
+      <div className="absolute top-20 right-0 w-64 h-64 opacity-[0.03] pointer-events-none hidden lg:block">
+        <div
+          className="w-full h-full bg-white"
+          style={{
+            clipPath: "polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%)",
+          }}
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="text-center lg:text-left">
             <div
-              className="inline-flex items-center gap-2 border border-indigo-500/30 bg-indigo-500/10 rounded-full px-4 py-1.5 mb-8 shadow-[0_0_24px_rgba(99,102,241,0.15)] animate-fade-in opacity-0"
+              className="inline-flex items-center gap-2 border border-white/15 bg-white/[0.03] px-4 py-1.5 mb-8 zk-badge animate-fade-in opacity-0"
               style={fadeUp(100)}
             >
-              <Zap className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-indigo-200">
-                Stellar DeFi · On-chain only
+              <span className="w-1.5 h-1.5 bg-white animate-pulse" />
+              <span className="text-xs font-mono font-semibold uppercase tracking-widest text-white/60">
+                Zero-Knowledge · On-chain only
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-6">
               <span className="block overflow-hidden">
                 <span
                   className="block animate-slide-up opacity-0 text-white"
@@ -49,7 +58,7 @@ export function Hero() {
             </h1>
 
             <p
-              className="text-lg sm:text-xl text-white/50 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed animate-slide-up opacity-0"
+              className="text-base sm:text-lg text-white/45 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed tracking-wide animate-slide-up opacity-0"
               style={fadeUp(450)}
             >
               No banks. No forms. No gatekeepers. ZCore turns verified Stellar
@@ -65,7 +74,7 @@ export function Hero() {
                 <a href={getDappUrl("/register")}>
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto px-8 h-14 text-base shadow-[0_0_32px_rgba(99,102,241,0.4)] hover:shadow-[0_0_48px_rgba(99,102,241,0.55)] animate-shimmer bg-[length:200%_100%]"
+                    className="w-full sm:w-auto px-8 h-14 text-sm uppercase tracking-zk glow-white"
                   >
                     Check your score
                     <ArrowRight className="w-5 h-5" />
@@ -77,7 +86,7 @@ export function Hero() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="w-full sm:w-auto px-8 h-14 text-base border-white/15 hover:border-indigo-500/40"
+                    className="w-full sm:w-auto px-8 h-14 text-sm uppercase tracking-zk"
                   >
                     See how it works
                   </Button>
@@ -90,24 +99,24 @@ export function Hero() {
               style={fadeUp(720)}
             >
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-black text-white">0–850</div>
-                <div className="text-[11px] uppercase tracking-wider text-white/30 mt-1">
+                <div className="text-2xl font-bold text-white tabular-nums">0–850</div>
+                <div className="text-[10px] uppercase tracking-zk-wide text-white/30 mt-1">
                   Score range
                 </div>
               </div>
               <div className="text-center lg:text-left border-l border-white/10 pl-4">
-                <div className="text-2xl font-black text-white">
+                <div className="text-2xl font-bold text-white tabular-nums">
                   <AnimatedCounter value={3} suffix="+" duration={1400} />
                 </div>
-                <div className="text-[11px] uppercase tracking-wider text-white/30 mt-1">
+                <div className="text-[10px] uppercase tracking-zk-wide text-white/30 mt-1">
                   Protocols
                 </div>
               </div>
               <div className="text-center lg:text-left border-l border-white/10 pl-4">
-                <div className="text-2xl font-black text-white">
+                <div className="text-2xl font-bold text-white tabular-nums">
                   <AnimatedCounter value={0} prefix="$" duration={1600} />
                 </div>
-                <div className="text-[11px] uppercase tracking-wider text-white/30 mt-1">
+                <div className="text-[10px] uppercase tracking-zk-wide text-white/30 mt-1">
                   User fees
                 </div>
               </div>
