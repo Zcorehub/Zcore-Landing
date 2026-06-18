@@ -15,13 +15,14 @@ const FOOTER_LINKS = {
     { label: "Discussions", href: siteConfig.discussions, external: true },
   ],
   app: [{ label: "ZCore", href: getDappUrl("/register"), external: true }],
+  social: [{ label: "X", href: siteConfig.social.x, external: true }],
 };
 
 export function Footer() {
   return (
     <footer className="border-t border-white/[0.08] py-16 px-4 sm:px-6 bg-black">
       <div className="max-w-6xl mx-auto">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           <div className="sm:col-span-2 lg:col-span-1">
             <Logo size="sm" />
             <p className="text-xs text-white/40 tracking-wide mt-3 max-w-xs leading-relaxed">
@@ -53,6 +54,27 @@ export function Footer() {
             </p>
             <ul className="space-y-2">
               {FOOTER_LINKS.resources.map(({ label, href, external }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="text-xs text-white/50 hover:text-white transition-colors tracking-wide"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-zk-wide text-white/30 mb-4">
+              Social
+            </p>
+            <ul className="space-y-2">
+              {FOOTER_LINKS.social.map(({ label, href, external }) => (
                 <li key={label}>
                   <a
                     href={href}

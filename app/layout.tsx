@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     type: "website",
     images: ["/logo_name.png"],
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@z_core_",
+    creator: "@z_core_",
+  },
   icons: {
     icon: "/logo.jpeg",
     apple: "/logo.jpeg",

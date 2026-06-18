@@ -8,6 +8,10 @@ export const siteConfig = {
   landingRepo: "https://github.com/Zcorehub/Zcore-Landing",
   issues: "https://github.com/Zcorehub/Zcore-Landing/issues",
   discussions: "https://github.com/Zcorehub/Zcore-Landing/discussions",
+  social: {
+    x: "https://x.com/z_core_",
+    xHandle: "@z_core_",
+  },
 };
 
 export function getDappUrl(path = ""): string {
