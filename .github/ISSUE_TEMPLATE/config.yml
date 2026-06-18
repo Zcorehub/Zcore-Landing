@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contributing guide
+    url: https://github.com/Zcorehub/Zcore-Landing/blob/main/CONTRIBUTING.md
+    about: Read how to set up, code conventions, and open a PR
+  - name: GitHub Discussions
+    url: https://github.com/Zcorehub/Zcore-Landing/discussions
+    about: Ask questions or share ideas
