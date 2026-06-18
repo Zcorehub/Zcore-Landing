@@ -4,22 +4,29 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  WalletInput,
+  isWalletSubmitReady,
+} from "@/components/wallet-input";
 import { api } from "@/lib/api-client";
 import { AuthService } from "@/lib/auth";
-import { isValidStellarWallet } from "@/lib/utils";
 
 export default function LoginPage() {
   const router = useRouter();
   const [wallet, setWallet] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const canSubmit = isWalletSubmitReady(wallet);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (!isValidStellarWallet(wallet)) {
-      setError("Invalid Stellar wallet address. Must start with G and be 56 characters.");
+    if (!canSubmit) {
+      setError(
+        "Invalid Stellar wallet address. Must start with G and be 56 characters."
+      );
       return;
     }
 
@@ -42,8 +49,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-[#080B14] flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
+      <div className="w-full max-w-md animate-fade-in">
         <div className="flex items-center justify-center gap-2 mb-10">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center">
             <span className="text-sm font-bold">Z</span>
@@ -65,19 +71,7 @@ export default function LoginPage() {
               >
                 Stellar Wallet Address
               </label>
-              <input
-                id="wallet"
-                type="text"
-                value={wallet}
-                onChange={(e) => setWallet(e.target.value.trim())}
-                placeholder="GAYR3DYYONO..."
-                className="w-full bg-white/[0.05] border border-white/[0.1] rounded-xl px-4 py-3 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition-all"
-                autoComplete="off"
-                spellCheck={false}
-              />
-              <p className="text-white/30 text-xs mt-1.5">
-                56 characters, starts with G
-              </p>
+              <WalletInput id="wallet" value={wallet} onChange={setWallet} />
             </div>
 
             {error && (
@@ -87,14 +81,14 @@ export default function LoginPage() {
               </div>
             )}
 
-            <button
+            <Button
               type="submit"
-              disabled={loading || !wallet}
-              className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-white px-4 py-3 rounded-xl font-semibold text-sm"
+              disabled={loading || !canSubmit}
+              className="w-full h-12"
             >
               {loading ? "Logging in..." : "Log In"}
               {!loading && <ArrowRight className="w-4 h-4" />}
-            </button>
+            </Button>
           </form>
 
           <p className="text-center text-sm text-white/40 mt-6">

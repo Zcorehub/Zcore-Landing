@@ -3,23 +3,30 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, AlertCircle, CheckCircle } from "lucide-react";
+import { ArrowRight, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  WalletInput,
+  isWalletSubmitReady,
+} from "@/components/wallet-input";
 import { api } from "@/lib/api-client";
 import { AuthService } from "@/lib/auth";
-import { isValidStellarWallet } from "@/lib/utils";
 
 export default function RegisterPage() {
   const router = useRouter();
   const [wallet, setWallet] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const canSubmit = isWalletSubmitReady(wallet);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (!isValidStellarWallet(wallet)) {
-      setError("Invalid Stellar wallet address. Must start with G and be 56 characters.");
+    if (!canSubmit) {
+      setError(
+        "Invalid Stellar wallet address. Must start with G and be 56 characters."
+      );
       return;
     }
 
@@ -36,12 +43,9 @@ export default function RegisterPage() {
     }
   }
 
-  const walletOk = wallet.length > 0 && isValidStellarWallet(wallet);
-
   return (
     <div className="min-h-screen bg-[#080B14] flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
+      <div className="w-full max-w-md animate-fade-in">
         <div className="flex items-center justify-center gap-2 mb-10">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center">
             <span className="text-sm font-bold">Z</span>
@@ -63,24 +67,12 @@ export default function RegisterPage() {
               >
                 Stellar Wallet Address
               </label>
-              <div className="relative">
-                <input
-                  id="wallet"
-                  type="text"
-                  value={wallet}
-                  onChange={(e) => setWallet(e.target.value.trim())}
-                  placeholder="GAYR3DYYONO..."
-                  className="w-full bg-white/[0.05] border border-white/[0.1] rounded-xl px-4 py-3 pr-10 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition-all"
-                  autoComplete="off"
-                  spellCheck={false}
-                />
-                {walletOk && (
-                  <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400" />
-                )}
-              </div>
-              <p className="text-white/30 text-xs mt-1.5">
-                56 characters, starts with G. Your wallet must exist on Stellar.
-              </p>
+              <WalletInput
+                id="wallet"
+                value={wallet}
+                onChange={setWallet}
+                showValidationIcon
+              />
             </div>
 
             {error && (
@@ -90,14 +82,14 @@ export default function RegisterPage() {
               </div>
             )}
 
-            <button
+            <Button
               type="submit"
-              disabled={loading || !wallet}
-              className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-white px-4 py-3 rounded-xl font-semibold text-sm"
+              disabled={loading || !canSubmit}
+              className="w-full h-12"
             >
               {loading ? "Registering..." : "Generate my score"}
               {!loading && <ArrowRight className="w-4 h-4" />}
-            </button>
+            </Button>
           </form>
 
           <div className="mt-6 p-4 bg-white/[0.02] border border-white/[0.06] rounded-xl">
