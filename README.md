@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://zcore.vercel.app"><strong>zcore.vercel.app</strong></a> ·
   <a href="./CONTRIBUTING.md">Contributing</a> ·
   <a href="https://github.com/Zcorehub/Zcore-Landing/issues">Issues</a>
 </p>
@@ -19,6 +20,8 @@
 ## What is this repo?
 
 This repository contains the **ZCore** marketing site: animations, informational sections, and CTAs to the dapp.
+
+**Live site:** [zcore.vercel.app](https://zcore.vercel.app)
 
 | Includes | Does not include |
 |---|---|

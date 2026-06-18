@@ -30,7 +30,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). Production: [zcore.vercel.app](https://zcore.vercel.app).
 
 Set `NEXT_PUBLIC_DAPP_URL` in `.env.local` so CTA buttons link to the deployed dapp.
 

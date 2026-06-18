@@ -1,5 +1,8 @@
 blank_issues_enabled: true
 contact_links:
+  - name: Live site
+    url: https://zcore.vercel.app
+    about: View the deployed ZCore landing page
   - name: Contributing guide
     url: https://github.com/Zcorehub/Zcore-Landing/blob/main/CONTRIBUTING.md
     about: Read how to set up, code conventions, and open a PR

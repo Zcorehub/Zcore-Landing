@@ -2,6 +2,14 @@
   "name": "zcore",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://zcore.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zcorehub/Zcore-Landing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zcorehub/Zcore-Landing/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

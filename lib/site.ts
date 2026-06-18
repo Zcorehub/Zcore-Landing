@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "ZCore",
+  url: "https://zcore.vercel.app",
   tagline: "Discover, access, and activate on-chain credit. All in one place.",
   description:
     "Turn your on-chain payment history into a verifiable credit score. No banks. No forms. Just your wallet.",
