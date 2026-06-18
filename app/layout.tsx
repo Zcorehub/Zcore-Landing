@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,6 +12,12 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-mono",
 });
 
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-zk",
+});
+
 export const metadata: Metadata = {
   title: "ZCore — Your Wallet Is Your Credit | Stellar DeFi",
   description:
@@ -21,6 +27,11 @@ export const metadata: Metadata = {
     description:
       "Portable on-chain credit scoring for Stellar DeFi. Built from real on-chain proof.",
     type: "website",
+    images: ["/logo.jpeg"],
+  },
+  icons: {
+    icon: "/logo.jpeg",
+    apple: "/logo.jpeg",
   },
 };
 
@@ -32,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${jetbrains.variable} bg-[#030508] text-white antialiased font-sans`}
+        className={`${inter.variable} ${jetbrains.variable} ${spaceMono.variable} bg-black text-white antialiased`}
       >
         {children}
       </body>

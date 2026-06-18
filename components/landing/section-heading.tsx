@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export function SectionLabel({
+export function SectionHeading({
   children,
   className,
 }: {
@@ -8,13 +8,13 @@ export function SectionLabel({
   className?: string;
 }) {
   return (
-    <span
+    <h2
       className={cn(
-        "inline-block text-[10px] font-bold uppercase tracking-zk-wide text-white/40 mb-4",
+        "text-2xl sm:text-4xl font-bold uppercase tracking-zk leading-tight mb-4 text-white",
         className
       )}
     >
       {children}
-    </span>
+    </h2>
   );
 }
