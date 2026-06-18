@@ -1,8 +1,8 @@
 # ZCore Landing
 
-Landing page de ZCore — credit scoring portable para Stellar DeFi.
+Landing page oficial de ZCore — credit scoring portable para Stellar DeFi.
 
-Presenta el producto, partners, sistema de score y CTAs hacia login/registro. La dapp autenticada vive en un repositorio separado.
+Dark, agresiva, animada. CTAs apuntan a la dapp vía `NEXT_PUBLIC_DAPP_URL`.
 
 ## Quick start
 
@@ -16,14 +16,25 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000).
 
-Para el backend, ver [ZCore-dev](https://github.com/Zcorehub/ZCore-dev).
+## Variables de entorno
+
+```env
+NEXT_PUBLIC_DAPP_URL=https://tu-dapp.vercel.app
+```
+
+Sin esta variable, los CTAs apuntan a `#launch` en la misma página.
+
+## Issues relevantes (este repo)
+
+| Issue | Estado |
+|---|---|
+| #6 Mobile hamburger menu | ✅ |
+| #7 Custom 404 page | ✅ |
+| #1–#5, #8 | Dapp — otro repo |
 
 ## Stack
 
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS + shadcn/ui
-- lucide-react
+- Next.js 14 · TypeScript · Tailwind CSS · shadcn/ui · lucide-react
 
 ## Contribuir
 

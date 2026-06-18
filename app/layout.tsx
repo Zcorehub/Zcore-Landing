@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+
 export const metadata: Metadata = {
-  title: "ZCore — Portable Credit Scoring for Stellar DeFi",
+  title: "ZCore — Your Wallet Is Your Credit | Stellar DeFi",
   description:
-    "Turn your on-chain payment history into a verifiable credit score. Unlock better lending rates across the Stellar ecosystem.",
+    "Portable on-chain credit scoring for Stellar. No banks. No forms. Just verified wallet history turned into a 0–850 score.",
   openGraph: {
-    title: "ZCore — Portable Credit Scoring for Stellar DeFi",
+    title: "ZCore — Your Wallet Is Your Credit",
     description:
-      "Turn your on-chain payment history into a verifiable credit score.",
+      "Portable on-chain credit scoring for Stellar DeFi. Built from real on-chain proof.",
     type: "website",
   },
 };
@@ -20,7 +31,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-[#080B14] text-white antialiased">{children}</body>
+      <body
+        className={`${inter.variable} ${jetbrains.variable} bg-[#030508] text-white antialiased font-sans`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
