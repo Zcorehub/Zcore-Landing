@@ -36,6 +36,12 @@ body {
     @apply bg-gradient-to-r from-indigo-300 via-violet-300 to-cyan-300 bg-clip-text text-transparent;
   }
 
+  .gradient-text-animated {
+    @apply bg-gradient-to-r from-indigo-300 via-violet-200 to-cyan-300 bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradientShift 4s linear infinite;
+  }
+
   .card-glass {
     @apply bg-white/[0.03] border border-white/[0.08] rounded-2xl backdrop-blur-sm;
   }
@@ -46,5 +52,14 @@ body {
 
   .bg-noise {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
   }
 }
