@@ -58,16 +58,24 @@ export function Hero() {
             </h1>
 
             <p
-              className="text-base sm:text-lg text-white/45 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed tracking-wide animate-slide-up opacity-0"
+              className="text-base sm:text-lg text-white/45 max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed tracking-wide animate-slide-up opacity-0"
+              style={fadeUp(400)}
+            >
+              All-in-one portable credit scoring for Stellar. Discover your
+              score, access better rates, and activate your on-chain reputation
+              in one place.
+            </p>
+
+            <p
+              className="text-sm text-white/35 max-w-xl mx-auto lg:mx-0 mb-10 tracking-wide animate-slide-up opacity-0"
               style={fadeUp(450)}
             >
-              No banks. No forms. No gatekeepers. ZCore turns verified Stellar
-              activity into a portable 0-850 score, built from real on-chain
-              proof, not paperwork.
+              No banks. No forms. No gatekeepers. Built from real on-chain proof,
+              not paperwork.
             </p>
 
             <div
-              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 animate-slide-up opacity-0"
+              className="flex flex-col sm:flex-row flex-wrap items-center lg:items-start justify-center lg:justify-start gap-4 animate-slide-up opacity-0"
               style={fadeUp(580)}
             >
               <MagneticWrap strength={0.2}>
@@ -76,19 +84,30 @@ export function Hero() {
                     size="lg"
                     className="w-full sm:w-auto px-8 h-14 text-sm uppercase tracking-zk glow-white"
                   >
-                    Check your score
+                    Launch app
                     <ArrowRight className="w-5 h-5" />
                   </Button>
                 </a>
               </MagneticWrap>
               <MagneticWrap strength={0.15}>
-                <a href="#how-it-works">
+                <a href="#score">
                   <Button
                     variant="outline"
                     size="lg"
                     className="w-full sm:w-auto px-8 h-14 text-sm uppercase tracking-zk"
                   >
-                    See how it works
+                    Explore score
+                  </Button>
+                </a>
+              </MagneticWrap>
+              <MagneticWrap strength={0.12}>
+                <a href="#how-it-works">
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="w-full sm:w-auto px-6 h-14 text-sm uppercase tracking-zk text-white/50"
+                  >
+                    How it works
                   </Button>
                 </a>
               </MagneticWrap>

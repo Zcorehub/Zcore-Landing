@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils";
 import { getDappUrl } from "@/lib/site";
 
 const NAV_LINKS = [
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#partners", label: "Partners" },
+  { href: "#problem", label: "Problem" },
+  { href: "#solution", label: "Solution" },
   { href: "#score", label: "Score" },
-  { href: "#tiers", label: "Tiers" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export function LandingNav() {
