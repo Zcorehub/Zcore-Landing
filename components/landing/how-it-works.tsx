@@ -1,4 +1,5 @@
 import { BarChart3, Globe, Lock } from "lucide-react";
+import { TiltCard } from "@/components/landing/motion";
 import { Reveal } from "@/components/landing/reveal";
 import { SectionLabel } from "@/components/landing/section-label";
 
@@ -30,7 +31,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <Reveal className="text-center mb-16">
+        <Reveal variant="blur" className="text-center mb-16">
           <SectionLabel>Process</SectionLabel>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
             Three steps. Zero bullshit.
@@ -43,21 +44,24 @@ export function HowItWorks() {
 
         <div className="grid md:grid-cols-3 gap-5">
           {STEPS.map(({ n, title, desc, icon: Icon, accent }, i) => (
-            <Reveal key={n} delay={i * 120}>
-              <div
-                className={`group relative h-full p-7 rounded-2xl border bg-gradient-to-b ${accent} hover:scale-[1.02] transition-transform duration-300`}
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <span className="text-5xl font-black text-white/[0.06] group-hover:text-indigo-500/20 transition-colors">
-                    {n}
-                  </span>
-                  <div className="w-11 h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-indigo-300" />
+            <Reveal key={n} delay={i * 120} variant="scale">
+              <TiltCard>
+                <div
+                  className={`group relative h-full p-7 rounded-2xl border bg-gradient-to-b ${accent} transition-all duration-300 hover:shadow-[0_0_40px_rgba(99,102,241,0.08)]`}
+                >
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="flex items-start justify-between mb-6">
+                    <span className="text-5xl font-black text-white/[0.06] group-hover:text-indigo-500/25 transition-colors duration-500">
+                      {n}
+                    </span>
+                    <div className="w-11 h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center group-hover:border-indigo-500/30 group-hover:rotate-12 transition-all duration-300">
+                      <Icon className="w-5 h-5 text-indigo-300" />
+                    </div>
                   </div>
+                  <h3 className="text-xl font-bold mb-3">{title}</h3>
+                  <p className="text-white/45 text-sm leading-relaxed">{desc}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{title}</h3>
-                <p className="text-white/45 text-sm leading-relaxed">{desc}</p>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

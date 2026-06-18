@@ -1,4 +1,5 @@
 import { BarChart3, ExternalLink, Shield, Zap } from "lucide-react";
+import { TiltCard } from "@/components/landing/motion";
 import { Reveal } from "@/components/landing/reveal";
 import { SectionLabel } from "@/components/landing/section-label";
 import { siteConfig } from "@/lib/site";
@@ -10,7 +11,8 @@ const PARTNERS = [
     event: "escrow_completed",
     points: "+60",
     icon: Shield,
-    glow: "hover:shadow-[0_0_40px_rgba(99,102,241,0.15)]",
+    glow: "hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]",
+    border: "hover:border-indigo-500/40",
   },
   {
     name: "Blend Protocol",
@@ -18,7 +20,8 @@ const PARTNERS = [
     event: "loan_repaid",
     points: "+80",
     icon: BarChart3,
-    glow: "hover:shadow-[0_0_40px_rgba(139,92,246,0.15)]",
+    glow: "hover:shadow-[0_0_40px_rgba(139,92,246,0.2)]",
+    border: "hover:border-violet-500/40",
   },
   {
     name: "Vaquita",
@@ -26,7 +29,8 @@ const PARTNERS = [
     event: "tanda_cycle_complete",
     points: "+100",
     icon: Zap,
-    glow: "hover:shadow-[0_0_40px_rgba(34,211,238,0.12)]",
+    glow: "hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]",
+    border: "hover:border-cyan-500/40",
   },
 ];
 
@@ -35,7 +39,7 @@ export function Partners() {
     <section id="partners" className="py-24 px-4 sm:px-6 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/[0.15] to-transparent pointer-events-none" />
       <div className="max-w-6xl mx-auto relative">
-        <Reveal className="text-center mb-16">
+        <Reveal variant="blur" className="text-center mb-16">
           <SectionLabel>Ecosystem</SectionLabel>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
             Partner protocols
@@ -47,40 +51,42 @@ export function Partners() {
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-5">
-          {PARTNERS.map(({ name, desc, event, points, icon: Icon, glow }, i) => (
-            <Reveal key={name} delay={i * 100}>
-              <div
-                className={`group h-full p-7 rounded-2xl border border-white/[0.08] bg-[#0a0e1a]/60 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/30 ${glow}`}
-              >
-                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <Icon className="w-6 h-6 text-indigo-300" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{name}</h3>
-                <p className="text-white/45 text-sm mb-5">{desc}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
-                  <code className="text-[11px] font-mono text-indigo-300/80 bg-indigo-500/10 px-2 py-1 rounded">
-                    {event}
-                  </code>
-                  <span className="text-lg font-black text-emerald-400">
-                    {points}
-                    <span className="text-xs font-normal text-white/30 ml-1">
-                      pts
+          {PARTNERS.map(({ name, desc, event, points, icon: Icon, glow, border }, i) => (
+            <Reveal key={name} delay={i * 100} variant={i % 2 === 0 ? "left" : "right"}>
+              <TiltCard>
+                <div
+                  className={`group h-full p-7 rounded-2xl border border-white/[0.08] bg-[#0a0e1a]/60 backdrop-blur-sm transition-all duration-500 ${glow} ${border}`}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                    <Icon className="w-6 h-6 text-indigo-300 group-hover:text-cyan-300 transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{name}</h3>
+                  <p className="text-white/45 text-sm mb-5">{desc}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
+                    <code className="text-[11px] font-mono text-indigo-300/80 bg-indigo-500/10 px-2 py-1 rounded group-hover:bg-indigo-500/20 transition-colors">
+                      {event}
+                    </code>
+                    <span className="text-lg font-black text-emerald-400 group-hover:scale-110 transition-transform inline-block">
+                      {points}
+                      <span className="text-xs font-normal text-white/30 ml-1">
+                        pts
+                      </span>
                     </span>
-                  </span>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
 
-        <Reveal delay={300} className="mt-10 text-center">
+        <Reveal delay={300} variant="up" className="mt-10 text-center">
           <p className="text-white/35 text-sm">
             Building on Stellar?{" "}
             <a
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-indigo-400 hover:text-indigo-300 inline-flex items-center gap-1 font-medium"
+              className="text-indigo-400 hover:text-indigo-300 inline-flex items-center gap-1 font-medium underline-offset-4 hover:underline"
             >
               Become a partner <ExternalLink className="w-3 h-3" />
             </a>

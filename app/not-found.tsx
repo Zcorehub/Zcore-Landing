@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-import { BackgroundEffects } from "@/components/landing/background";
+import { MouseParallaxBg } from "@/components/landing/motion";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#030508] text-white relative flex items-center justify-center px-4">
-      <BackgroundEffects />
+      <MouseParallaxBg />
       <div className="w-full max-w-lg text-center relative animate-fade-in">
         <div className="inline-flex items-center gap-2.5 mb-10">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-[0_0_24px_rgba(99,102,241,0.4)]">

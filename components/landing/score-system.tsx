@@ -17,7 +17,7 @@ export function ScoreSystem() {
     <section id="score" className="py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <Reveal>
+          <Reveal variant="right">
             <SectionLabel>Scoring Engine</SectionLabel>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
               0–850. Fully transparent.
@@ -68,7 +68,7 @@ export function ScoreSystem() {
             </div>
           </Reveal>
 
-          <Reveal delay={150}>
+          <Reveal delay={150} variant="left">
             <div className="rounded-2xl border border-white/[0.08] bg-[#0a0e1a]/80 overflow-hidden">
               <div className="px-5 py-4 border-b border-white/[0.08] flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-widest text-white/40">
