@@ -5,29 +5,29 @@
 <h1 align="center">ZCore Landing</h1>
 
 <p align="center">
-  Landing oficial de <strong>ZCore</strong> — credit scoring portable para Stellar DeFi.<br/>
-  Zero-knowledge, on-chain only. Sin bancos. Sin formularios. Solo tu wallet.
+  Official landing page for <strong>ZCore</strong> — portable credit scoring for Stellar DeFi.<br/>
+  Zero-knowledge, on-chain only. No banks. No forms. Just your wallet.
 </p>
 
 <p align="center">
-  <a href="./CONTRIBUTING.md">Contribuir</a> ·
+  <a href="./CONTRIBUTING.md">Contributing</a> ·
   <a href="https://github.com/Zcorehub/Zcore-Landing/issues">Issues</a>
 </p>
 
 ---
 
-## Qué es este repo
+## What is this repo?
 
-Este repositorio contiene **únicamente la landing page** de ZCore: marketing, animaciones, secciones informativas y CTAs hacia la dapp.
+This repository contains **only the ZCore landing page**: marketing, animations, informational sections, and CTAs to the dapp.
 
-| Incluye | No incluye |
+| Includes | Does not include |
 |---|---|
 | Hero, partners, scoring, tiers, builders | Login / register |
-| Animaciones y efectos visuales | Dashboard |
-| Links a la dapp vía env var | API backend |
-| Página 404 custom | Historial de eventos |
+| Animations and visual effects | Dashboard |
+| Dapp links via env var | Backend API |
+| Custom 404 page | Event history |
 
-La dapp autenticada y el backend viven en repositorios separados. Ver [ZCore-dev](https://github.com/Zcorehub/ZCore-dev).
+The authenticated dapp and backend live in separate repos. See [ZCore-dev](https://github.com/Zcorehub/ZCore-dev).
 
 ---
 
@@ -41,13 +41,13 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-### Variables de entorno
+### Environment variables
 
-| Variable | Requerida | Descripción |
+| Variable | Required | Description |
 |---|---|---|
-| `NEXT_PUBLIC_DAPP_URL` | No | URL de la dapp desplegada. Sin ella, los CTAs apuntan a `#launch`. |
+| `NEXT_PUBLIC_DAPP_URL` | No | Deployed dapp URL. Without it, CTAs point to `#launch`. |
 
 ```env
 NEXT_PUBLIC_DAPP_URL=https://app.zcore.xyz
@@ -55,102 +55,102 @@ NEXT_PUBLIC_DAPP_URL=https://app.zcore.xyz
 
 ### Scripts
 
-| Comando | Descripción |
+| Command | Description |
 |---|---|
-| `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Build de producción |
-| `npm run start` | Servidor post-build |
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Post-build server |
 | `npm run lint` | ESLint |
 
 ---
 
-## Secciones de la landing
+## Landing sections
 
-| Sección | Componente | Descripción |
+| Section | Component | Description |
 |---|---|---|
-| Hero | `hero.tsx` | Headline, badge ZK, score preview animado |
-| Marquee | `marquee.tsx` | Ticker de claims (no custody, open source, etc.) |
-| How It Works | `how-it-works.tsx` | 3 pasos: wallet → chain → score |
+| Hero | `hero.tsx` | Headline, ZK badge, animated score preview |
+| Marquee | `marquee.tsx` | Claim ticker (no custody, open source, etc.) |
+| How It Works | `how-it-works.tsx` | 3 steps: wallet → chain → score |
 | Partners | `partners.tsx` | Trustless Work, Blend, Vaquita |
-| Score System | `score-system.tsx` | Motor 0–850, breakdown transparente |
-| Tiers | `tiers.tsx` | Bandas de riesgo en % (LTV, default, APR) |
-| Builders | `builders.tsx` | API preview para integradores |
-| CTA | `cta.tsx` | Llamada final a la dapp |
+| Score System | `score-system.tsx` | 0–850 engine, transparent breakdown |
+| Tiers | `tiers.tsx` | Risk bands in % (LTV, default, APR) |
+| Builders | `builders.tsx` | API preview for integrators |
+| CTA | `cta.tsx` | Final call-to-action to the dapp |
 
 ---
 
 ## Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 |---|---|
 | Framework | Next.js 14 (App Router) |
-| Lenguaje | TypeScript |
-| Estilos | Tailwind CSS + utilidades custom ZK |
+| Language | TypeScript |
+| Styling | Tailwind CSS + custom ZK utilities |
 | UI base | shadcn/ui (`components/ui/`) |
-| Iconos | lucide-react |
-| Fuentes | Inter (headline), JetBrains Mono (badge), Space Mono (UI ZK) |
+| Icons | lucide-react |
+| Fonts | Inter (headline), JetBrains Mono (badge), Space Mono (ZK UI) |
 
 ---
 
-## Diseño
+## Design
 
-Estética **monocromática zero-knowledge**: negro puro, blanco, grises opacos. Sin acentos de color.
+**Monochrome zero-knowledge** aesthetic: pure black, white, opaque grays. No color accents.
 
-- Fondo: `#000000`
-- Tipografía ZK: `font-zk` (Space Mono) en UI, labels y secciones
-- Headline hero: Inter bold — `YOUR WALLET IS YOUR CREDIT.`
+- Background: `#000000`
+- ZK typography: `font-zk` (Space Mono) for UI, labels, and sections
+- Hero headline: Inter bold — `YOUR WALLET IS YOUR CREDIT.`
 - Badge: JetBrains Mono — `Zero-Knowledge · On-chain only`
-- Esquinas angulares: utilidades `zk-slash` y `zk-badge` en `globals.css`
-- Logo: solo en navbar (`components/landing/logo.tsx`)
+- Angular corners: `zk-slash` and `zk-badge` utilities in `globals.css`
+- Logo: navbar only (`components/landing/logo.tsx`)
 
 ---
 
-## Estructura del proyecto
+## Project structure
 
 ```
 app/
-  page.tsx          # Landing principal
-  layout.tsx        # Fuentes y metadata
-  not-found.tsx     # 404 custom
-  globals.css       # Tokens y utilidades ZK
+  page.tsx          # Main landing page
+  layout.tsx        # Fonts and metadata
+  not-found.tsx     # Custom 404
+  globals.css       # ZK tokens and utilities
 
 components/
-  landing/          # Secciones de la landing (un componente por sección)
-  ui/               # Primitivos shadcn (Button, Badge, Card…)
+  landing/          # Landing sections (one component per section)
+  ui/               # shadcn primitives (Button, Badge, Card…)
 
 lib/
-  site.ts           # Config del sitio + getDappUrl()
-  utils.ts          # cn() y helpers
+  site.ts           # Site config + getDappUrl()
+  utils.ts          # cn() and helpers
 
 public/
-  logo.jpeg         # Logo ZCore
+  logo.jpeg         # ZCore logo
 ```
 
 ---
 
-## Deploy en Vercel
+## Deploy on Vercel
 
-1. Importa el repo en [vercel.com/new](https://vercel.com/new).
-2. Framework preset: **Next.js** (auto-detectado).
-3. Añade `NEXT_PUBLIC_DAPP_URL` en Environment Variables.
+1. Import the repo at [vercel.com/new](https://vercel.com/new).
+2. Framework preset: **Next.js** (auto-detected).
+3. Add `NEXT_PUBLIC_DAPP_URL` under Environment Variables.
 4. Deploy.
 
 ```bash
 npx vercel          # preview
-npx vercel --prod   # producción
+npx vercel --prod   # production
 ```
 
 ---
 
-## Contribuir
+## Contributing
 
-¿Quieres mejorar la landing? Lee la guía completa en [CONTRIBUTING.md](./CONTRIBUTING.md).
+Want to improve the landing? Read the full guide in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-Flujo resumido:
+Quick flow:
 
-1. Abre o elige un [issue](https://github.com/Zcorehub/Zcore-Landing/issues).
-2. Fork → branch (`feat/nombre`, `fix/nombre`, `style/nombre`).
-3. `npm run dev` + verifica responsive.
-4. Abre un PR usando la [plantilla](./.github/pull_request_template.md).
+1. Open or pick an [issue](https://github.com/Zcorehub/Zcore-Landing/issues).
+2. Fork → branch (`feat/name`, `fix/name`, `style/name`).
+3. `npm run dev` + verify responsive layout.
+4. Open a PR using the [template](./.github/pull_request_template.md).
 
-Issues del programa **GrantFox OSS** pueden ser elegibles para recompensas al mergearse.
+Issues in the **GrantFox OSS** program may be eligible for rewards on merge.
