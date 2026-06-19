@@ -32,7 +32,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). Production: [zcore.vercel.app](https://zcore.vercel.app).
 
-Set `NEXT_PUBLIC_DAPP_URL` in `.env.local` so CTA buttons link to the deployed dapp.
+Set `NEXT_PUBLIC_DAPP_URL=https://dapp-zcore.vercel.app` in `.env.local` so CTA buttons link to the canonical deployed dapp.
 
 ```bash
 npm run build   # verify production build before opening a PR
@@ -51,7 +51,7 @@ npm run lint    # check for lint errors
 | CTA links via `getDappUrl()` | Database, wallet signing logic |
 | Copy, layout, responsive design | Partner protocol integrations |
 
-If your change touches dapp functionality, open the PR in the [dapp repo](https://github.com/Zcorehub/ZCore-dev) instead.
+If your change touches dapp functionality, open the PR in the [dapp repo](https://github.com/Zcorehub/ZCore-dev) instead. Landing CTAs should keep pointing to `https://dapp-zcore.vercel.app`; see ZCore-dev issue #22 for the cross-repo URL contract.
 
 ---
 

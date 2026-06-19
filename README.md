@@ -50,10 +50,10 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable | Required | Description |
 |---|---|---|
-| `NEXT_PUBLIC_DAPP_URL` | No | Deployed dapp URL. Without it, CTAs point to `#launch`. |
+| `NEXT_PUBLIC_DAPP_URL` | No | Deployed dapp URL. Defaults to `https://dapp-zcore.vercel.app`. |
 
 ```env
-NEXT_PUBLIC_DAPP_URL=https://app.zcore.xyz
+NEXT_PUBLIC_DAPP_URL=https://dapp-zcore.vercel.app
 ```
 
 ### Scripts
@@ -139,7 +139,7 @@ Production: **https://zcore.vercel.app**
 
 1. Import the repo at [vercel.com/new](https://vercel.com/new) (project name: `zcore`).
 2. Framework preset: **Next.js** (auto-detected via `vercel.json`).
-3. Add `NEXT_PUBLIC_DAPP_URL` under Environment Variables.
+3. Add `NEXT_PUBLIC_DAPP_URL=https://dapp-zcore.vercel.app` under Environment Variables.
 4. Deploy.
 
 ```bash

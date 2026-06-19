@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "ZCore",
   url: "https://zcore.vercel.app",
+  dappUrl: "https://dapp-zcore.vercel.app",
   tagline: "Discover, access, and activate on-chain credit. All in one place.",
   description:
     "Turn your on-chain payment history into a verifiable credit score. No banks. No forms. Just your wallet.",
@@ -19,7 +20,7 @@ export const siteConfig = {
 };
 
 export function getDappUrl(path = ""): string {
-  const base = process.env.NEXT_PUBLIC_DAPP_URL?.replace(/\/$/, "");
-  if (!base) return path ? `#${path}` : "#launch";
+  const base =
+    process.env.NEXT_PUBLIC_DAPP_URL?.replace(/\/$/, "") || siteConfig.dappUrl;
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
