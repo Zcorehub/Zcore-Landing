@@ -19,22 +19,42 @@ const spaceMono = Space_Mono({
   variable: "--font-zk",
 });
 
+const ogImage = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "ZCore wordmark on a monochrome zero-knowledge grid",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "ZCore",
+  title: siteConfig.name,
   description:
     "Discover, access, and activate on-chain credit on Stellar. No banks. No forms. Just your wallet.",
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: "ZCore",
+    title: siteConfig.name,
     description:
       "All-in-one portable credit scoring for Stellar. Built from real on-chain proof.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     type: "website",
-    images: ["/logo_name.png"],
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     site: "@z_core_",
     creator: "@z_core_",
+    title: siteConfig.name,
+    description:
+      "All-in-one portable credit scoring for Stellar. Built from real on-chain proof.",
+    images: [ogImage.url],
   },
   icons: {
     icon: "/logo.jpeg",
