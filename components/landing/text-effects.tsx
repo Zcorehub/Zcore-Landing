@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 interface AnimatedCounterProps {
@@ -19,10 +20,17 @@ export function AnimatedCounter({
   duration = 1800,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const reducedMotion = useReducedMotion();
   const [display, setDisplay] = useState(0);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
+    if (reducedMotion) {
+      setStarted(true);
+      setDisplay(value);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -38,10 +46,10 @@ export function AnimatedCounter({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [reducedMotion, value]);
 
   useEffect(() => {
-    if (!started) return;
+    if (!started || reducedMotion) return;
 
     let frame: number;
     const start = performance.now();
@@ -55,12 +63,12 @@ export function AnimatedCounter({
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [started, value, duration]);
+  }, [started, value, duration, reducedMotion]);
 
   return (
     <span ref={ref} className={cn("tabular-nums", className)}>
       {prefix}
-      {display}
+      {reducedMotion ? value : display}
       {suffix}
     </span>
   );
@@ -108,7 +116,16 @@ export function AnimatedGradientText({
   children: React.ReactNode;
   className?: string;
 }) {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <span className={cn("gradient-text-animated", className)}>{children}</span>
+    <span
+      className={cn(
+        reducedMotion ? "gradient-text" : "gradient-text-animated",
+        className
+      )}
+    >
+      {children}
+    </span>
   );
 }

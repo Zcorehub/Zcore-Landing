@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 interface MouseParallaxBgProps {
@@ -9,8 +10,11 @@ interface MouseParallaxBgProps {
 
 export function MouseParallaxBg({ className }: MouseParallaxBgProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     const el = ref.current;
     if (!el) return;
 
@@ -24,7 +28,7 @@ export function MouseParallaxBg({ className }: MouseParallaxBgProps) {
 
     window.addEventListener("mousemove", onMove, { passive: true });
     return () => window.removeEventListener("mousemove", onMove);
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <div
@@ -37,7 +41,10 @@ export function MouseParallaxBg({ className }: MouseParallaxBgProps) {
     >
       <div className="absolute inset-0 bg-black" />
       <div
-        className="absolute inset-0 opacity-[0.25] animate-grid-drift"
+        className={cn(
+          "absolute inset-0 opacity-[0.25]",
+          !reducedMotion && "animate-grid-drift"
+        )}
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
@@ -45,27 +52,39 @@ export function MouseParallaxBg({ className }: MouseParallaxBgProps) {
         }}
       />
       <div
-        className="absolute -top-40 left-1/2 w-[900px] h-[900px] rounded-full bg-white/[0.03] blur-[140px] animate-glow-pulse transition-transform duration-700 ease-out"
+        className={cn(
+          "absolute -top-40 left-1/2 w-[900px] h-[900px] rounded-full bg-white/[0.03] blur-[140px]",
+          !reducedMotion &&
+            "animate-glow-pulse transition-transform duration-700 ease-out"
+        )}
         style={{
           transform:
             "translate(calc(-50% + var(--mx) * 40px), calc(0px + var(--my) * 30px))",
         }}
       />
       <div
-        className="absolute top-1/3 -right-32 w-[500px] h-[500px] rounded-full bg-neutral-800/[0.15] blur-[120px] animate-float transition-transform duration-700 ease-out"
+        className={cn(
+          "absolute top-1/3 -right-32 w-[500px] h-[500px] rounded-full bg-neutral-800/[0.15] blur-[120px]",
+          !reducedMotion &&
+            "animate-float transition-transform duration-700 ease-out"
+        )}
         style={{
           transform: "translate(calc(var(--mx) * -25px), calc(var(--my) * 20px))",
         }}
       />
       <div
-        className="absolute bottom-0 -left-32 w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[100px] animate-float-delayed transition-transform duration-700 ease-out"
+        className={cn(
+          "absolute bottom-0 -left-32 w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[100px]",
+          !reducedMotion &&
+            "animate-float-delayed transition-transform duration-700 ease-out"
+        )}
         style={{
           transform: "translate(calc(var(--mx) * 20px), calc(var(--my) * -15px))",
         }}
       />
       <div className="absolute inset-0 bg-noise opacity-[0.04]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      <FloatingParticles />
+      <FloatingParticles reducedMotion={reducedMotion} />
       <DiagonalSlash />
     </div>
   );
@@ -80,7 +99,7 @@ function DiagonalSlash() {
   );
 }
 
-function FloatingParticles() {
+function FloatingParticles({ reducedMotion }: { reducedMotion: boolean }) {
   const particles = Array.from({ length: 12 }, (_, i) => ({
     id: i,
     left: `${(i * 17 + 7) % 100}%`,
@@ -95,7 +114,10 @@ function FloatingParticles() {
       {particles.map((p) => (
         <span
           key={p.id}
-          className="absolute bg-white/20 animate-particle-float"
+          className={cn(
+            "absolute bg-white/20",
+            !reducedMotion && "animate-particle-float"
+          )}
           style={{
             left: p.left,
             top: p.top,
@@ -117,8 +139,11 @@ interface TiltCardProps {
 
 export function TiltCard({ children, className }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
 
   function handleMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (reducedMotion) return;
+
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -128,6 +153,8 @@ export function TiltCard({ children, className }: TiltCardProps) {
   }
 
   function handleLeave() {
+    if (reducedMotion) return;
+
     const el = ref.current;
     if (!el) return;
     el.style.transform =
@@ -158,8 +185,11 @@ export function MagneticWrap({
   strength = 0.25,
 }: MagneticWrapProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
 
   function handleMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (reducedMotion) return;
+
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -169,6 +199,8 @@ export function MagneticWrap({
   }
 
   function handleLeave() {
+    if (reducedMotion) return;
+
     const el = ref.current;
     if (!el) return;
     el.style.transform = "translate(0px, 0px)";

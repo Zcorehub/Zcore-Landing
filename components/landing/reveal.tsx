@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 type RevealVariant = "up" | "down" | "left" | "right" | "scale" | "blur";
@@ -37,9 +38,15 @@ export function Reveal({
   variant = "up",
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (reducedMotion) {
+      setVisible(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -55,17 +62,19 @@ export function Reveal({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <div
       ref={ref}
       className={cn(
         "transition-all duration-700 ease-out will-change-transform",
-        visible ? VARIANT_VISIBLE[variant] : VARIANT_HIDDEN[variant],
+        reducedMotion || visible ? VARIANT_VISIBLE[variant] : VARIANT_HIDDEN[variant],
         className
       )}
-      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+      style={{
+        transitionDelay: !reducedMotion && visible ? `${delay}ms` : "0ms",
+      }}
     >
       {children}
     </div>
@@ -82,9 +91,15 @@ export function StaggerChildren({
   staggerMs?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (reducedMotion) {
+      setVisible(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -100,7 +115,7 @@ export function StaggerChildren({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <div ref={ref} className={className}>
@@ -110,12 +125,13 @@ export function StaggerChildren({
               key={i}
               className={cn(
                 "transition-all duration-700 ease-out",
-                visible
+                reducedMotion || visible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6"
               )}
               style={{
-                transitionDelay: visible ? `${i * staggerMs}ms` : "0ms",
+                transitionDelay:
+                  !reducedMotion && visible ? `${i * staggerMs}ms` : "0ms",
               }}
             >
               {child}
