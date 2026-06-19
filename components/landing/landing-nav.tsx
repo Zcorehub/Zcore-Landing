@@ -17,6 +17,7 @@ const NAV_LINKS = [
 export function LandingNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState(NAV_LINKS[0].href);
 
   useEffect(() => {
     function onScroll() {
@@ -25,6 +26,34 @@ export function LandingNav() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map(({ href }) =>
+      document.getElementById(href.slice(1))
+    ).filter((section): section is HTMLElement => Boolean(section));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleEntry?.target.id) {
+          setActiveHref(`#${visibleEntry.target.id}`);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
   function closeMenu() {
@@ -46,15 +75,24 @@ export function LandingNav() {
         <Logo size="sm" href="/" onClick={closeMenu} className="group" />
 
         <div className="hidden md:flex items-center gap-8 text-xs text-white/40 uppercase tracking-zk">
-          {NAV_LINKS.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className="hover:text-white transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-white/60 after:transition-all hover:after:w-full"
-            >
-              {label}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ href, label }) => {
+            const active = activeHref === href;
+
+            return (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setActiveHref(href)}
+                aria-current={active ? "location" : undefined}
+                className={cn(
+                  "hover:text-white transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-white/60 after:transition-all hover:after:w-full",
+                  active && "text-white after:w-full"
+                )}
+              >
+                {label}
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -89,16 +127,27 @@ export function LandingNav() {
         )}
       >
         <div className="px-4 py-4 space-y-1">
-          {NAV_LINKS.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              onClick={closeMenu}
-              className="block px-3 py-2.5 text-xs text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors uppercase tracking-zk"
-            >
-              {label}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ href, label }) => {
+            const active = activeHref === href;
+
+            return (
+              <a
+                key={href}
+                href={href}
+                onClick={() => {
+                  setActiveHref(href);
+                  closeMenu();
+                }}
+                aria-current={active ? "location" : undefined}
+                className={cn(
+                  "block px-3 py-2.5 text-xs text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors uppercase tracking-zk",
+                  active && "bg-white/[0.08] text-white"
+                )}
+              >
+                {label}
+              </a>
+            );
+          })}
           <div className="pt-3 mt-3 border-t border-white/[0.08] space-y-2">
             <a href={getDappUrl("/login")} onClick={closeMenu}>
               <Button variant="outline" className="w-full">
