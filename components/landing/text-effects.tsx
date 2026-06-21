@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { usePrefersReducedMotion } from "@/components/landing/motion";
 
 interface AnimatedCounterProps {
   value: number;
@@ -21,8 +22,15 @@ export function AnimatedCounter({
   const ref = useRef<HTMLSpanElement>(null);
   const [display, setDisplay] = useState(0);
   const [started, setStarted] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplay(value);
+      setStarted(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -38,9 +46,14 @@ export function AnimatedCounter({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [prefersReducedMotion, value]);
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplay(value);
+      return;
+    }
+
     if (!started) return;
 
     let frame: number;
@@ -55,7 +68,7 @@ export function AnimatedCounter({
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [started, value, duration]);
+  }, [prefersReducedMotion, started, value, duration]);
 
   return (
     <span ref={ref} className={cn("tabular-nums", className)}>
@@ -79,19 +92,26 @@ export function StaggerLines({
   lineClassName,
   delayStep = 100,
 }: StaggerLinesProps) {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   return (
     <span className={className}>
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden">
           <span
             className={cn(
-              "block animate-slide-up opacity-0",
+              "block",
+              prefersReducedMotion ? "opacity-100" : "animate-slide-up opacity-0",
               lineClassName
             )}
-            style={{
-              animationDelay: `${200 + i * delayStep}ms`,
-              animationFillMode: "forwards",
-            }}
+            style={
+              prefersReducedMotion
+                ? undefined
+                : {
+                    animationDelay: `${200 + i * delayStep}ms`,
+                    animationFillMode: "forwards",
+                  }
+            }
           >
             {line}
           </span>
@@ -108,7 +128,16 @@ export function AnimatedGradientText({
   children: React.ReactNode;
   className?: string;
 }) {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   return (
-    <span className={cn("gradient-text-animated", className)}>{children}</span>
+    <span
+      className={cn(
+        prefersReducedMotion ? "gradient-text" : "gradient-text-animated",
+        className
+      )}
+    >
+      {children}
+    </span>
   );
 }
