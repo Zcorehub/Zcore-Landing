@@ -1,18 +1,14 @@
 import { Logo } from "@/components/landing/logo";
 import { SocialButtons } from "@/components/landing/social-buttons";
+import { footerLandingLinks } from "@/lib/landing-nav";
 import { getDappUrl, siteConfig } from "@/lib/site";
 
 const FOOTER_LINKS = {
-  links: [
-    { label: "Problem", href: "#problem" },
-    { label: "Solution", href: "#solution" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: siteConfig.issues },
-  ],
   resources: [
     { label: "GitHub", href: siteConfig.github, external: true },
     { label: "API", href: siteConfig.backendRepo, external: true },
     { label: "Contribute", href: siteConfig.issues, external: true },
+    { label: "Contact", href: siteConfig.issues, external: true },
     { label: "Discussions", href: siteConfig.discussions, external: true },
   ],
   app: [{ label: "ZCore", href: getDappUrl("/register"), external: true }],
@@ -35,7 +31,7 @@ export function Footer() {
               Links
             </p>
             <ul className="space-y-2">
-              {FOOTER_LINKS.links.map(({ label, href }) => (
+              {footerLandingLinks.map(({ label, href }) => (
                 <li key={label}>
                   <a
                     href={href}
