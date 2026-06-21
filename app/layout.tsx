@@ -3,6 +3,13 @@ import { Inter, JetBrains_Mono, Space_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
+const ogImage = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "ZCore on-chain credit score preview",
+};
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -29,12 +36,25 @@ export const metadata: Metadata = {
     description:
       "All-in-one portable credit scoring for Stellar. Built from real on-chain proof.",
     type: "website",
-    images: ["/logo_name.png"],
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     site: "@z_core_",
     creator: "@z_core_",
+    title: "ZCore",
+    description:
+      "All-in-one portable credit scoring for Stellar. Built from real on-chain proof.",
+    images: [ogImage],
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
   icons: {
     icon: "/logo.jpeg",
