@@ -1,5 +1,8 @@
 "use client";
 
+import { usePrefersReducedMotion } from "@/components/landing/motion";
+import { cn } from "@/lib/utils";
+
 const ROW_A = [
   "NO EMAIL REQUIRED",
   "NO CUSTODY",
@@ -21,10 +24,15 @@ function MarqueeRow({
   reverse?: boolean;
 }) {
   const doubled = [...items, ...items];
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
     <div
-      className={`flex whitespace-nowrap ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+      className={cn(
+        "flex whitespace-nowrap",
+        !prefersReducedMotion &&
+          (reverse ? "animate-marquee-reverse" : "animate-marquee")
+      )}
     >
       {doubled.map((item, i) => (
         <span
