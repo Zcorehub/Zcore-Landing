@@ -4,15 +4,9 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/landing/logo";
+import { HEADER_NAV_LINKS } from "@/lib/landing-nav";
 import { cn } from "@/lib/utils";
 import { getDappUrl } from "@/lib/site";
-
-const NAV_LINKS = [
-  { href: "#problem", label: "Problem" },
-  { href: "#solution", label: "Solution" },
-  { href: "#score", label: "Score" },
-  { href: "#faq", label: "FAQ" },
-];
 
 export function LandingNav() {
   const [open, setOpen] = useState(false);
@@ -46,7 +40,7 @@ export function LandingNav() {
         <Logo size="sm" href="/" onClick={closeMenu} className="group" />
 
         <div className="hidden md:flex items-center gap-8 text-xs text-white/40 uppercase tracking-zk">
-          {NAV_LINKS.map(({ href, label }) => (
+          {HEADER_NAV_LINKS.map(({ href, label }) => (
             <a
               key={href}
               href={href}
@@ -89,7 +83,7 @@ export function LandingNav() {
         )}
       >
         <div className="px-4 py-4 space-y-1">
-          {NAV_LINKS.map(({ href, label }) => (
+          {HEADER_NAV_LINKS.map(({ href, label }) => (
             <a
               key={href}
               href={href}

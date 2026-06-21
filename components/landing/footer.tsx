@@ -1,14 +1,10 @@
 import { Logo } from "@/components/landing/logo";
 import { SocialButtons } from "@/components/landing/social-buttons";
+import { FOOTER_NAV_LINKS } from "@/lib/landing-nav";
 import { getDappUrl, siteConfig } from "@/lib/site";
 
 const FOOTER_LINKS = {
-  links: [
-    { label: "Problem", href: "#problem" },
-    { label: "Solution", href: "#solution" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: siteConfig.issues },
-  ],
+  links: FOOTER_NAV_LINKS,
   resources: [
     { label: "GitHub", href: siteConfig.github, external: true },
     { label: "API", href: siteConfig.backendRepo, external: true },
