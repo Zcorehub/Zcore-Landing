@@ -6,13 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/landing/logo";
 import { cn } from "@/lib/utils";
 import { getDappUrl } from "@/lib/site";
-
-const NAV_LINKS = [
-  { href: "#problem", label: "Problem" },
-  { href: "#solution", label: "Solution" },
-  { href: "#score", label: "Score" },
-  { href: "#faq", label: "FAQ" },
-];
+import { headerLandingLinks } from "@/lib/landing-nav";
 
 export function LandingNav() {
   const [open, setOpen] = useState(false);
@@ -45,8 +39,8 @@ export function LandingNav() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Logo size="sm" href="/" onClick={closeMenu} className="group" />
 
-        <div className="hidden md:flex items-center gap-8 text-xs text-white/40 uppercase tracking-zk">
-          {NAV_LINKS.map(({ href, label }) => (
+        <div className="hidden md:flex items-center gap-5 text-xs text-white/40 uppercase tracking-zk">
+          {headerLandingLinks.map(({ href, label }) => (
             <a
               key={href}
               href={href}
@@ -89,7 +83,7 @@ export function LandingNav() {
         )}
       >
         <div className="px-4 py-4 space-y-1">
-          {NAV_LINKS.map(({ href, label }) => (
+          {headerLandingLinks.map(({ href, label }) => (
             <a
               key={href}
               href={href}
