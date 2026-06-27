@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { usePrefersReducedMotion } from "@/components/landing/motion";
 
 type RevealVariant = "up" | "down" | "left" | "right" | "scale" | "blur";
 
@@ -38,8 +39,14 @@ export function Reveal({
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setVisible(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -55,17 +62,22 @@ export function Reveal({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [prefersReducedMotion]);
+
+  const isVisible = visible || prefersReducedMotion;
 
   return (
     <div
       ref={ref}
       className={cn(
         "transition-all duration-700 ease-out will-change-transform",
-        visible ? VARIANT_VISIBLE[variant] : VARIANT_HIDDEN[variant],
+        prefersReducedMotion && "transition-none will-change-auto",
+        isVisible ? VARIANT_VISIBLE[variant] : VARIANT_HIDDEN[variant],
         className
       )}
-      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+      style={{
+        transitionDelay: isVisible && !prefersReducedMotion ? `${delay}ms` : "0ms",
+      }}
     >
       {children}
     </div>
@@ -83,8 +95,14 @@ export function StaggerChildren({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setVisible(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -100,7 +118,9 @@ export function StaggerChildren({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [prefersReducedMotion]);
+
+  const isVisible = visible || prefersReducedMotion;
 
   return (
     <div ref={ref} className={className}>
@@ -110,12 +130,14 @@ export function StaggerChildren({
               key={i}
               className={cn(
                 "transition-all duration-700 ease-out",
-                visible
+                prefersReducedMotion && "transition-none",
+                isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6"
               )}
               style={{
-                transitionDelay: visible ? `${i * staggerMs}ms` : "0ms",
+                transitionDelay:
+                  isVisible && !prefersReducedMotion ? `${i * staggerMs}ms` : "0ms",
               }}
             >
               {child}
