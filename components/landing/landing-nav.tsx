@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/landing/logo";
 import { cn } from "@/lib/utils";
 import { getDappUrl } from "@/lib/site";
+import { observeLandingSections } from "@/lib/landing-scroll-spy";
 
 const NAV_LINKS = [
   { href: "#problem", label: "Problem" },
@@ -17,14 +18,16 @@ const NAV_LINKS = [
 export function LandingNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState<string | null>(null);
 
   useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 20);
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return observeLandingSections(
+      NAV_LINKS.map(({ href }) => href),
+      (href, isScrolled) => {
+        setActiveHref(href);
+        setScrolled(isScrolled);
+      }
+    );
   }, []);
 
   function closeMenu() {
@@ -36,7 +39,7 @@ export function LandingNav() {
   return (
     <nav
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300 motion-reduce:transition-none",
         scrolled
           ? "border-b border-white/[0.08] bg-black/90 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
@@ -50,7 +53,11 @@ export function LandingNav() {
             <a
               key={href}
               href={href}
-              className="hover:text-white transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-white/60 after:transition-all hover:after:w-full"
+              aria-current={activeHref === href ? "location" : undefined}
+              className={cn(
+                "hover:text-white transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-white/60 after:transition-all hover:after:w-full motion-reduce:transition-none motion-reduce:after:transition-none",
+                activeHref === href && "text-white after:w-full"
+              )}
             >
               {label}
             </a>
@@ -84,7 +91,7 @@ export function LandingNav() {
 
       <div
         className={cn(
-          "md:hidden border-t border-white/[0.08] bg-black/95 backdrop-blur-xl overflow-hidden transition-all duration-300",
+          "md:hidden border-t border-white/[0.08] bg-black/95 backdrop-blur-xl overflow-hidden transition-all duration-300 motion-reduce:transition-none",
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-t-0"
         )}
       >
@@ -93,8 +100,12 @@ export function LandingNav() {
             <a
               key={href}
               href={href}
+              aria-current={activeHref === href ? "location" : undefined}
               onClick={closeMenu}
-              className="block px-3 py-2.5 text-xs text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors uppercase tracking-zk"
+              className={cn(
+                "block px-3 py-2.5 text-xs text-white/70 hover:text-white hover:bg-white/[0.05] transition-colors uppercase tracking-zk motion-reduce:transition-none",
+                activeHref === href && "text-white underline underline-offset-4"
+              )}
             >
               {label}
             </a>
